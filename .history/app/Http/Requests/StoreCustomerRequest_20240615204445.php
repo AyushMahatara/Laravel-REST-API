@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCustomerRequest extends FormRequest
@@ -31,12 +30,5 @@ class StoreCustomerRequest extends FormRequest
             'state' => ['required'],
             'postalCode' => ['required'],
         ];
-    }
-
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'postal_code' => $this->postalCode
-        ]);
     }
 }
