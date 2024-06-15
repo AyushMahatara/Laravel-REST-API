@@ -28,8 +28,9 @@ class CustomerController extends Controller
 
         $filter = new CustomerFilter();
         $filterItems = $filter->transform($request);
+
         $includeInvoices = $request->query('includeInvoices');
-        $customers = Customer::where($filterItems);
+        $customers = Customer::where([$filterItems]);
         if ($includeInvoices) {
             $customers = $customers->with('invoices');
         }
@@ -58,9 +59,8 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        $includeInvoices = request()->query('includeInvoices');
+        $includeInvoices = $request()->query('includeInvoices');
         if ($includeInvoices) {
-            return new CustomerResource($customer->loadMissing('invoices'));
         }
 
         return new CustomerResource($customer);

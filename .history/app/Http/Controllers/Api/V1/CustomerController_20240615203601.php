@@ -28,8 +28,9 @@ class CustomerController extends Controller
 
         $filter = new CustomerFilter();
         $filterItems = $filter->transform($request);
+        dd('asd');
         $includeInvoices = $request->query('includeInvoices');
-        $customers = Customer::where($filterItems);
+        $customers = Customer::where([$filterItems]);
         if ($includeInvoices) {
             $customers = $customers->with('invoices');
         }
