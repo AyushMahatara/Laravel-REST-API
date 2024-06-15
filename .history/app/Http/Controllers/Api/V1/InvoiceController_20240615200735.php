@@ -24,8 +24,8 @@ class InvoiceController extends Controller
         if (count($queryItems) == 0) {
             return new InvoiceCollection(Invoice::paginate());
         } else {
-            $invoices = Invoice::where($queryItems)->paginate();
-            return new InvoiceCollection($invoices->appends($request->query()));
+            $invoice = Invoice::where($queryItems)->paginate();
+            return new InvoiceCollection();
         }
     }
     /**
