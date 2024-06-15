@@ -30,10 +30,8 @@ Route::get('/setup', function () {
 
             return [
                 'admin' => $adminToken->plainTextToken,
-                'update' => $updateToken->plainTextToken,
-                'basic' => $basicToken->plainTextToken,
-
-            ];
+                
+            ]
         }
     }
 });

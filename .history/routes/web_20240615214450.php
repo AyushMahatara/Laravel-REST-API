@@ -20,20 +20,5 @@ Route::get('/setup', function () {
         $user->password = Hash::make($credentials['password']);
 
         $user->save();
-
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-
-            $adminToken = $user->createToken('admin-token', ['create', 'update', 'delete']);
-            $updateToken = $user->createToken('update-token', ['create', 'update']);
-            $basicToken = $user->createToken('basic-token');
-
-            return [
-                'admin' => $adminToken->plainTextToken,
-                'update' => $updateToken->plainTextToken,
-                'basic' => $basicToken->plainTextToken,
-
-            ];
-        }
     }
 });

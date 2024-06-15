@@ -33,7 +33,7 @@ Route::get('/setup', function () {
                 'update' => $updateToken->plainTextToken,
                 'basic' => $basicToken->plainTextToken,
 
-            ];
+            ]
         }
     }
 });
